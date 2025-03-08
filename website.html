@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ankitha V - DevOps Engineer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom right, #B3D8A8, #F3D8D7, #FBFFE4);
+            text-align: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .btn {
+            background-color: #7FB3D5;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            margin: 5px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .btn:hover {
+            background-color: #5D9ECC;
+        }
+        .content {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Ankitha V - DevOps Engineer</h1>
+        <div id="buttons"></div>
+        <div class="content" id="content"></div>
+    </div>
+
+    <script>
+        const sections = {
+            "About": "I am Ankitha V, a DevOps Engineer passionate about automation, CI/CD, and cloud technologies.",
+            "Education": [
+                "Bachelor of Technology in Computer Science Engineering, Reva University, Bengaluru, 2022",
+                "Diploma in Computer Science Engineering, Government Polytechnic, Mulbagal, 2019"
+            ],
+            "Skills": [
+                "Git, GitHub", "AWS", "Docker", "Kubernetes", "Ansible", "Terraform", "Bash & Python", "Jenkins, GitHub Actions"
+            ],
+            "Projects": {
+                "DevOps Workflow Optimization": "Complete CI/CD pipeline implementation with GitHub Actions, ArgoCD, Kubernetes, and Helm.",
+                "AWS Cloud Cost Optimization": "Automated Lambda function for managing stale EBS snapshots."
+            },
+            "Experience": [
+                "CGI (Associate Software Engineer): Enhanced Java applications, collaborated with stakeholders, and managed GitLab repositories.",
+                "Self-learning (DevOps Projects): Hands-on implementation of cloud-based infrastructure."
+            ],
+            "Certifications": [
+                "MicroDegree – DevOps Masterclass (2024)", "SimpliLearn - Introduction to DevOps Tools (2024)"
+            ],
+            "Contact": {
+                "Email": "jobsforankithav@gmail.com",
+                "Phone": "8971488385",
+                "GitHub": "<a href='https://github.com/ankithaV' target='_blank'>GitHub</a>",
+                "LinkedIn": "<a href='https://linkedin.com/in/ankithaV' target='_blank'>LinkedIn</a>"
+            }
+        };
+
+        const buttonsDiv = document.getElementById("buttons");
+        const contentDiv = document.getElementById("content");
+
+        Object.keys(sections).forEach(section => {
+            let btn = document.createElement("button");
+            btn.className = "btn";
+            btn.innerText = section;
+            btn.onclick = () => displayContent(section);
+            buttonsDiv.appendChild(btn);
+        });
+
+        function displayContent(section) {
+            let content = sections[section];
+            if (typeof content === "string") {
+                contentDiv.innerHTML = `<p>${content}</p>`;
+            } else if (Array.isArray(content)) {
+                contentDiv.innerHTML = `<ul>${content.map(item => `<li>${item}</li>`).join('')}</ul>`;
+            } else if (typeof content === "object") {
+                contentDiv.innerHTML = Object.keys(content).map(key => `<p><strong>${key}:</strong> ${content[key]}</p>`).join('');
+            }
+        }
+    </script>
+</body>
+</html>
