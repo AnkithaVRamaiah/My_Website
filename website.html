@@ -19,79 +19,47 @@
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        .btn {
-            background-color: #7FB3D5;
-            color: white;
-            border: none;
-            padding: 10px 15px;
+        button {
             margin: 5px;
+            padding: 10px 20px;
+            background: #7FB3D5;
+            border: none;
+            color: white;
             cursor: pointer;
             border-radius: 5px;
         }
-        .btn:hover {
-            background-color: #5D9ECC;
+        button:hover {
+            background: #5D9ECC;
         }
-        .content {
-            margin-top: 20px;
+        .hidden {
+            display: none;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Ankitha V - DevOps Engineer</h1>
-        <div id="buttons"></div>
-        <div class="content" id="content"></div>
+    <h1>Ankitha V - DevOps Engineer</h1>
+    <div>
+        <button onclick="showSection('about')">About</button>
+        <button onclick="showSection('education')">Education</button>
+        <button onclick="showSection('skills')">Skills</button>
+        <button onclick="showSection('projects')">Projects</button>
+        <button onclick="showSection('experience')">Experience</button>
+        <button onclick="showSection('certifications')">Certifications</button>
+        <button onclick="showSection('contact')">Contact</button>
     </div>
-
+    <div class="container">
+        <div id="about">I am Ankitha V, a DevOps Engineer passionate about automation, CI/CD, and cloud technologies.</div>
+        <div id="education" class="hidden">Bachelor of Technology in Computer Science Engineering, Reva University, Bengaluru, 2022.</div>
+        <div id="skills" class="hidden">Git, AWS, Docker, Kubernetes, Ansible, Terraform, Bash, Python, Jenkins, GitHub Actions.</div>
+        <div id="projects" class="hidden">DevOps Workflow Optimization, AWS Cloud Cost Optimization.</div>
+        <div id="experience" class="hidden">CGI (Associate Software Engineer), DevOps Self-learning.</div>
+        <div id="certifications" class="hidden">DevOps Masterclass, Cloud Computing, Blockchain Technology.</div>
+        <div id="contact" class="hidden">Email: jobsforankithav@gmail.com | GitHub: github.com/ankithaV | LinkedIn: linkedin.com/in/ankithaV</div>
+    </div>
     <script>
-        const sections = {
-            "About": "I am Ankitha V, a DevOps Engineer passionate about automation, CI/CD, and cloud technologies.",
-            "Education": [
-                "Bachelor of Technology in Computer Science Engineering, Reva University, Bengaluru, 2022",
-                "Diploma in Computer Science Engineering, Government Polytechnic, Mulbagal, 2019"
-            ],
-            "Skills": [
-                "Git, GitHub", "AWS", "Docker", "Kubernetes", "Ansible", "Terraform", "Bash & Python", "Jenkins, GitHub Actions"
-            ],
-            "Projects": {
-                "DevOps Workflow Optimization": "Complete CI/CD pipeline implementation with GitHub Actions, ArgoCD, Kubernetes, and Helm.",
-                "AWS Cloud Cost Optimization": "Automated Lambda function for managing stale EBS snapshots."
-            },
-            "Experience": [
-                "CGI (Associate Software Engineer): Enhanced Java applications, collaborated with stakeholders, and managed GitLab repositories.",
-                "Self-learning (DevOps Projects): Hands-on implementation of cloud-based infrastructure."
-            ],
-            "Certifications": [
-                "MicroDegree – DevOps Masterclass (2024)", "SimpliLearn - Introduction to DevOps Tools (2024)"
-            ],
-            "Contact": {
-                "Email": "jobsforankithav@gmail.com",
-                "Phone": "8971488385",
-                "GitHub": "<a href='https://github.com/ankithaV' target='_blank'>GitHub</a>",
-                "LinkedIn": "<a href='https://linkedin.com/in/ankithaV' target='_blank'>LinkedIn</a>"
-            }
-        };
-
-        const buttonsDiv = document.getElementById("buttons");
-        const contentDiv = document.getElementById("content");
-
-        Object.keys(sections).forEach(section => {
-            let btn = document.createElement("button");
-            btn.className = "btn";
-            btn.innerText = section;
-            btn.onclick = () => displayContent(section);
-            buttonsDiv.appendChild(btn);
-        });
-
-        function displayContent(section) {
-            let content = sections[section];
-            if (typeof content === "string") {
-                contentDiv.innerHTML = `<p>${content}</p>`;
-            } else if (Array.isArray(content)) {
-                contentDiv.innerHTML = `<ul>${content.map(item => `<li>${item}</li>`).join('')}</ul>`;
-            } else if (typeof content === "object") {
-                contentDiv.innerHTML = Object.keys(content).map(key => `<p><strong>${key}:</strong> ${content[key]}</p>`).join('');
-            }
+        function showSection(section) {
+            document.querySelectorAll('.container div').forEach(div => div.classList.add('hidden'));
+            document.getElementById(section).classList.remove('hidden');
         }
     </script>
 </body>
